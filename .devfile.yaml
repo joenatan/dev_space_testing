@@ -40,7 +40,16 @@ commands:
       group:
         kind: build
         isDefault: true
+  - id: django-run
+    exec:
+      component: base
+      commandLine: python manage.py runserver 0.0.0.0:8000
+      workingDir: ${PROJECT_SOURCE}
+      group:
+        kind: run
+        isDefault: true        
 events:
   postStart:
     - uv-install
     - uv-sync
+    - django-run
