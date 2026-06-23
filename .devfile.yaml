@@ -1,0 +1,25 @@
+schemaVersion: 2.2.2
+metadata:
+  name: devspace-test-jb
+components:
+  - name: base
+    container:
+      # image: registry.redhat.io/devspaces/udi-base-rhel10:3.28.2-1780600267
+      image: quay.io/devfile/universal-developer-image:ubi8-latest
+      endpoints:
+        - exposure: public
+          name: django
+          protocol: https
+          targetPort: 8000
+        - exposure: public
+          name: react
+          protocol: https
+          targetPort: 5173
+      memoryLimit: '1Gi'
+      memoryRequest: '512Mi'
+      cpuLimit: '0.5'
+      cpuRequest: '0.25'
+      # mountSources: true
+      # volumeMounts:
+      #   - name: npm
+      #     path: /home/user/.npm
