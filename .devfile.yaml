@@ -23,3 +23,15 @@ components:
       # volumeMounts:
       #   - name: npm
       #     path: /home/user/.npm
+commands:
+  - id: pip-install
+    exec:
+      component: base
+      commandLine: pip install --user -r requirements.dev.txt
+      workingDir: ${PROJECT_SOURCE}
+      group:
+        kind: build
+        isDefault: true
+events:
+  postStart:
+    - pip-install
