@@ -24,14 +24,23 @@ components:
       #   - name: npm
       #     path: /home/user/.npm
 commands:
-  - id: pip-install
+  - id: uv-install
     exec:
       component: base
-      commandLine: pip install --user -r requirements.dev.txt
+      commandLine: curl -LsSf https://astral.sh/uv/install.sh | sh
+      workingDir: ${PROJECT_SOURCE}
+      group:
+        kind: build
+        isDefault: true
+  - id: uv-sync
+    exec:
+      component: base
+      commandLine: uv sync
       workingDir: ${PROJECT_SOURCE}
       group:
         kind: build
         isDefault: true
 events:
   postStart:
-    - pip-install
+    - uv-install
+    - uv-sync
