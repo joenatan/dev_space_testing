@@ -23,6 +23,23 @@ components:
       # volumeMounts:
       #   - name: npm
       #     path: /home/user/.npm
+  - name: postgres
+    container:
+      image: quay.io/sclorg/postgresql-16-c10s
+      memoryLimit: '1Gi'
+      memoryRequest: '256Mi'
+      cpuLimit: '0.5'
+      env:
+        - name: POSTGRESQL_USER
+          value: postgres
+        - name: POSTGRESQL_PASSWORD
+          value: postgres
+        - name: POSTGRESQL_DATABASE
+          value: postgres
+      endpoints:
+        - name: postgres
+          targetPort: 5432
+          exposure: none       
 commands:
   - id: uv-install
     exec:
