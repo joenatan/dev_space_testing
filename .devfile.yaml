@@ -36,6 +36,8 @@ components:
           value: secret1234
         - name: POSTGRESQL_DATABASE
           value: app
+      # - name: POSTGRESQL_ADMIN_PASSWORD
+      #   value: einadminpasswort          
       endpoints:
         - name: postgres
           targetPort: 5432
