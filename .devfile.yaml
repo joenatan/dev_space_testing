@@ -31,15 +31,21 @@ components:
       cpuLimit: '0.5'
       env:
         - name: POSTGRESQL_USER
-          value: postgres
+          value: app
         - name: POSTGRESQL_PASSWORD
-          value: postgres
+          value: secret1234
         - name: POSTGRESQL_DATABASE
-          value: postgres
+          value: app
       endpoints:
         - name: postgres
           targetPort: 5432
           exposure: none       
+  #     volumeMounts:
+  #       - name: pgdata
+  #         path: /var/lib/pgsql/data
+  # - name: pgdata
+  #   volume:
+  #     size: 512Mi          
 commands:
   - id: uv-install
     exec:
