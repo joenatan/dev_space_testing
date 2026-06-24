@@ -69,4 +69,3 @@ events:
   postStart:
     - uv-install
     - uv-sync
-    - django-run
